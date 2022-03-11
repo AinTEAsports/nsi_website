@@ -1,3 +1,4 @@
+// Dictionnaire avec la liste des jeux et leur lien
 const games = {
     "morpion" : "/morpion/index.html",
     "pendu" : "/pendu/index.html",
@@ -5,17 +6,7 @@ const games = {
 };
 
 
-function printChoice() {
-    var choice = document.getElementById('selectInput').value;
-
-    if (choice == 'Menu Principal') {
-        return;
-    }
-
-    document.getElementById('textInput').innerHTML = choice;
-}
-
-
+// Fonction pour chopper le nom du jeu choisi
 function getGameName() {
     var gameName = document.getElementById('selectInput').value;
 
@@ -27,6 +18,7 @@ function getGameName() {
 }
 
 
+// Fonction du bouton pour rediriger vers le lien quand le bouton est pressé
 function gameRedirect() {
     var gameName = getGameName();
     
