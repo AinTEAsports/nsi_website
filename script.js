@@ -30,3 +30,8 @@ function gameRedirect() {
     var gameLink = games[gameName];
     window.location.href = gameLink;
 }
+
+
+function rickroll() {
+    window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+}
