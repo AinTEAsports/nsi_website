@@ -3,6 +3,5 @@ userText {
 };
 
 ordiText {
-    position: absolute;
-    right: 0px;
+    float: left;
 }

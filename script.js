@@ -2,7 +2,8 @@
 const games = {
     "morpion" : "/morpion/index.html",
     "pendu" : "/pendu/index.html",
-    "shifumi" : "/shifumi/index.html"
+    "shifumi" : "/shifumi/index.html",
+    "enigmes" : "/enigmes/index.html"
 };
 
 
