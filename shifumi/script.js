@@ -1,3 +1,7 @@
+var userScore = 0;
+var ordiScore = 0;
+
+
 function ordiRandomChoice() {
     // Je fais une liste avec les elements pierre feuille et ciseau
     // et j'en choisis un au hasard
