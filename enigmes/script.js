@@ -1,5 +1,6 @@
 var enigmes = {
-    "Qu'est-ce qui est jaune et qui attend ?" : "Jonathan",
+    "Qu'est ce qui peut tourner et pleurer ?" : "Un robinet",
+    "J'ai 4 pattes le matin, 2 pattes le midi et 3 pattes le soir, qui suis-je ?" : "L'Homme",
 };
 
 
@@ -21,6 +22,7 @@ function generateEnigme() {
 function sendAnswer() {
 
 }
+
 
 function homeButton() {
     window.location.href = "/";
