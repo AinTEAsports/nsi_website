@@ -1,6 +1,9 @@
 var userScore = 0;
 var ordiScore = 0;
 
+var playedParties = 0;
+var tiesNumber = 0;
+
 
 function ordiRandomChoice() {
     // Je fais une liste avec les elements pierre feuille et ciseau
@@ -24,9 +27,16 @@ function adjustScore() {
         ordiScore++;
     } else if ((ordiChoice == userChoice)) {
         document.getElementById('winner').innerHTML = "Tie !";
+
+        tiesNumber++;
+        document.getElementById('tiesNumber').innerHTML = "Egalités : " + tiesNumber;
     } else {
         document.getElementById('winner').innerHTML = "!!! PROBLEM !!!";
     }
+    
+    playedParties++;
+
+    document.getElementById('playedParties').innerHTML = "Parties jouées : " + playedParties;
 
     var score = userScore + " - " + ordiScore
     document.getElementById('score').innerHTML = score;
@@ -48,12 +58,18 @@ function reset() {
     userScore = 0;
     ordiScore = 0;
 
+    playedParties = 0;
+    tiesNumber = 0;
+
     var score = userScore + " - " + ordiScore
     document.getElementById('score').innerHTML = score;
 
     document.getElementById('winner').innerHTML = "";
     document.getElementById('userChoiceText').innerHTML = "";
     document.getElementById('ordiChoice').innerHTML = "";
+
+    document.getElementById('playedParties').innerHTML = "Parties jouées : 0";
+    document.getElementById('tiesNumber').innerHTML = "Egalités : 0";
 }
 
 
