@@ -13,10 +13,10 @@ var enigmes = {
 function ordiRandomChoice() {
     // Je fais une liste avec les elements pierre feuille et ciseau
     // et j'en choisis un au hasard
-    var choices = ['Pierre', 'Feuille', 'Ciseau'];
-    var randomChoice = choices[Math.floor(Math.random() * choices.length)];
+    var questionList = enigmes.keys;
+    var question = questionList[Math.floor(Math.random() * questionList.length)];
 
-    return randomChoice;
+    return question;
 }
 
 
