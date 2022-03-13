@@ -13,7 +13,18 @@ function ordiRandomChoice() {
 
 
 function adjustScore() {
-    
+    var userChoice = document.getElementById('userChoice');
+    var ordiChoice = document.getElementById('ordiChoice');
+
+    if (ordiChoice == userChoice) {
+        document.getElementById('winner') = "Egalite !";
+    } else if ((ordiChoice == "Pierre" && userChoice == "Feuille") ||
+        (ordiChoice == "Feuille" && userChoice == "Ciseau") ||
+        (ordiChoice == "Ciseau " && userChoice == "Pierre")) {
+        document.getElementById('winner') = "User wins !";
+    } else {
+        document.getElementById('winner') = "Ordi wins !";
+    }
 }
 
 
