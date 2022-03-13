@@ -44,6 +44,19 @@ function userPlayed() {
 }
 
 
+function reset() {
+    userScore = 0;
+    ordiScore = 0;
+
+    var score = userScore + " - " + ordiScore
+    document.getElementById('score').innerHTML = score;
+
+    document.getElementById('winner').innerHTML = "";
+    document.getElementById('userChoiceText').innerHTML = "";
+    document.getElementById('ordiChoice').innerHTML = "";
+}
+
+
 function homeButton() {
     window.location.href = "/";
 }

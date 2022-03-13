@@ -26,9 +26,15 @@
 }
 
 
-.go {
+.gohome {
     position: absolute;
     top: 600px;
+}
+
+
+.reset {
+    position: absolute;
+    top: 570px;
 }
 
 
