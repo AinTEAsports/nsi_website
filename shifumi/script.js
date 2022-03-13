@@ -12,12 +12,19 @@ function ordiRandomChoice() {
 }
 
 
+function adjustScore() {
+    
+}
+
+
 function userPlayed() {
     var userChoice = document.getElementById('userChoice').value;
     var ordiChoice = ordiRandomChoice();
 
     document.getElementById('userChoiceText').innerHTML = userChoice;
     document.getElementById('ordiChoice').innerHTML = ordiChoice;
+
+    adjustScore();
 }
 
 

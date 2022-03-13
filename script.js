@@ -1,9 +1,9 @@
 // Dictionnaire avec la liste des jeux et leur lien
 const games = {
-    "morpion" : "/morpion/index.html",
-    "pendu" : "/pendu/index.html",
+    "enigmes" : "/enigmes/index.html",
     "shifumi" : "/shifumi/index.html",
-    "enigmes" : "/enigmes/index.html"
+    "pendu" : "/pendu/index.html",
+    "morpion" : "/morpion/index.html",
 };
 
 

@@ -6,6 +6,7 @@ var enigmes = {
     "Quand je suis frais je suis chaud, qui suis-je ?" : "Le pain",
     "Quand je suis content je me lève, mais je suis plus petit que le reste, qui suis-je ?" : "Le pouce",
     "J'ai un pied mais pas de chaussure, j'ai un chapeau mais pas de tête, qui suis-je ?" : "Un champignon",
+    "Plus je suis present et moins je pese, qui suis-je ?" : "Le vide",
 };
 
 
@@ -26,7 +27,7 @@ function generateEnigme() {
 
 
 function sendAnswer() {
-
+    
 }
 
 
