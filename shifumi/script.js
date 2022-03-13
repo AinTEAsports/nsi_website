@@ -5,7 +5,7 @@ var ordiScore = 0;
 function ordiRandomChoice() {
     // Je fais une liste avec les elements pierre feuille et ciseau
     // et j'en choisis un au hasard
-    var choices = ['Pierre', 'Feuille', 'Ciseau'];
+    var choices = ["Pierre", "Feuille", "Ciseau"];
     var randomChoice = choices[Math.floor(Math.random() * choices.length)];
 
     return randomChoice;
@@ -14,20 +14,22 @@ function ordiRandomChoice() {
 
 function adjustScore() {
     var userChoice = document.getElementById('userChoice').value;
-    var ordiChoice = document.getElementById('ordiChoice');
+    var ordiChoice = document.getElementById('ordiChoice').innerHTML;
 
-    console.log(userChoice);
-    console.log(ordiChoice);
-
-    if ((ordiChoice === "Pierre" && userChoice === "Ciseau") || (ordiChoice === "Feuille" && userChoice === "Ciseau") || (ordiChoice === "Ciseau" && userChoice === "Pierre")) {
+    if ((ordiChoice == "Pierre" && userChoice == "Feuille") || (ordiChoice == "Feuille" && userChoice == "Ciseau") || (ordiChoice == "Ciseau" && userChoice === "Pierre")) {
         document.getElementById('winner').innerHTML = "User won !";
-    } else if ((ordiChoice === "Pierre" && userChoice === "Ciseau") || (ordiChoice === "Feuille" && userChoice === "Pierre") || (ordiChoice === "Ciseau" && userChoice === "Feuille")) {
+        userScore++;
+    } else if ((ordiChoice === "Pierre" && userChoice == "Ciseau") || (ordiChoice == "Feuille" && userChoice == "Pierre") || (ordiChoice == "Ciseau" && userChoice === "Feuille")) {
         document.getElementById('winner').innerHTML = "Ordi won !";
-    } else if ((ordiChoice === userChoice)) {
+        ordiScore++;
+    } else if ((ordiChoice == userChoice)) {
         document.getElementById('winner').innerHTML = "Tie !";
     } else {
         document.getElementById('winner').innerHTML = "!!! PROBLEM !!!";
     }
+
+    var score = userScore + " - " + ordiScore
+    document.getElementById('score').innerHTML = score;
 }
 
 
