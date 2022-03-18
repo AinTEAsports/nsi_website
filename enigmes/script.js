@@ -13,16 +13,16 @@ var enigmes = {
 function ordiRandomChoice() {
     // Je fais une liste avec les elements pierre feuille et ciseau
     // et j'en choisis un au hasard
-    var questionList = enigmes.keys;
-    var question = questionList[Math.floor(Math.random() * questionList.length)];
+    var questionList = Object.values(enigmes);
+    var randomIndex = (Math.floor(Math.random() * questionList.length));
 
-    return question;
+    return questionList[randomIndex], randomIndex;
 }
 
 
 function generateEnigme() {
-    var choices = enigmes.keys;
-    console.log(choices);
+    var enigme, index = ordiRandomChoice();
+    document.getElementById('enigme').innerHTML = enigme;
 }
 
 
