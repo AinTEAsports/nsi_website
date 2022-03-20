@@ -10,27 +10,67 @@ var enigmes = {
     "Je suis meilleur que Dieu, pire que le diable, les pauvres l'ont, les riches en ont besoin, si tu me mange tu meurt, qui suis-je ?" : "Rien"
 };
 
+var index;
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    generateEnigme();
+});
+
 
 function ordiRandomChoice() {
     // Je fais une liste avec les elements pierre feuille et ciseau
     // et j'en choisis un au hasard
-    var questionList = Object.keys(enigmes);
-    var reponseList = Object.values(enigmes);
-    var randomIndex = (Math.floor(Math.random() * questionList.length));
+    var randomIndex = (Math.floor(Math.random() * Object.keys(enigmes).length));
 
-    return questionList[randomIndex], reponseList[randomIndex];
+    return randomIndex;
 }
 
 
 function generateEnigme() {
-    var enigme, reponse = ordiRandomChoice();
-    console.log(enigme + reponse + "\n");
+    // Je reinitialise le texte de bonne ou mauvaise reponse
+    document.getElementById('goodfalsereponse').innerHTML = "";
+
+    // Je reinitialise le nombre d'erreurs de la precedente enigme
+    document.getElementById('triesNumber').innerHTML = 0;
+
+
+    index = ordiRandomChoice();
+    
+    var enigmeList = Object.keys(enigmes);
+    var reponseList = Object.values(enigmes);
+
+    var enigme = enigmeList[index];
+    var reponse = reponseList[index];
+
+    // Je reinitialise le contenu de l'input
+    document.getElementById('userResponse').value = "";
+
     document.getElementById('enigme').innerHTML = enigme;
 }
 
 
 function sendAnswer() {
-    
+    let enigmeAffichee = document.getElementById('enigme').innerHTML;
+    let userReponse = document.getElementById('userResponse').value;
+
+    let reponseList = Object.values(enigmes);
+
+
+    if (userReponse == "") {
+        return;
+    }
+
+
+    if (userReponse.toLowerCase() == reponseList[index].toLowerCase()) {
+        document.getElementById('goodfalsereponse').innerHTML = "Bonne reponse !"
+    } else {
+        document.getElementById('goodfalsereponse').innerHTML = "Mauvaise reponse !"
+
+        let essaisNumber = document.getElementById('triesNumber').innerHTML;
+        essaisNumber++;
+        document.getElementById('triesNumber').innerHTML = essaisNumber;
+    }
 }
 
 
