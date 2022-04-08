@@ -1,9 +1,11 @@
 html {
-    background-image: url(https://www.hdwallpaperslife.com/wp-content/uploads/2018/01/neon_sunset_4k-wide.jpg);
+    background-image: url('./websiteBackground.jpg');
+    background-size: cover;
 }
 
 body {
-    background-image: url(https://www.hdwallpaperslife.com/wp-content/uploads/2018/01/neon_sunset_4k-wide.jpg);
+    background-image: url('./websiteBackground.jpg');
+    background-size: cover;
 }
 
 #ordiChoice {
