@@ -27,6 +27,7 @@ button {
     margin: 2px;
     text-align: center;
     margin-top: 130pt;
+    line-height: 0px;
 }
 
 .text {
@@ -43,4 +44,5 @@ button {
     width: 160pt;
     height: 37px;
     text-align: center;
+    line-height: 0px;
 }

@@ -15,7 +15,7 @@ button {
     border: 0px;
     color: #ffffff;
     text-align: center;
-    font-size: 14px;
+    font-size: 15px;
     padding: 20px;
     width: 170px;
     height: 50px;
@@ -27,6 +27,29 @@ button {
     margin: 2px;
     text-align: center;
     margin-top: 20pt;
+    line-height: 0px;
+}
+
+.home-button {
+    display: inline-block;
+    background-color: #35113d;
+    border-radius: 20px;
+    border: 0px;
+    color: #ffffff;
+    text-align: center;
+    font-size: 18px;
+    padding: 20px;
+    width: 170px;
+    height: 50px;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 2px;
+    text-align: center;
+    margin-top: 20pt;
+    line-height: 0px;
 }
 
 .text {

@@ -19,10 +19,10 @@ function adjustScore() {
     var userChoice = document.getElementById('userChoice').value;
     var ordiChoice = document.getElementById('ordiChoice').innerHTML;
 
-    if ((ordiChoice == "Pierre" && userChoice == "Feuille") || (ordiChoice == "Feuille" && userChoice == "Ciseau") || (ordiChoice == "Ciseau" && userChoice === "Pierre")) {
+    if ((ordiChoice == "Pierre" && userChoice == "Feuille") || (ordiChoice == "Feuille" && userChoice == "Ciseau") || (ordiChoice == "Ciseau" && userChoice == "Pierre")) {
         document.getElementById('winner').innerHTML = "User won !";
         userScore++;
-    } else if ((ordiChoice === "Pierre" && userChoice == "Ciseau") || (ordiChoice == "Feuille" && userChoice == "Pierre") || (ordiChoice == "Ciseau" && userChoice === "Feuille")) {
+    } else if ((ordiChoice === "Pierre" && userChoice == "Ciseau") || (ordiChoice == "Feuille" && userChoice == "Pierre") || (ordiChoice == "Ciseau" && userChoice == "Feuille")) {
         document.getElementById('winner').innerHTML = "Ordi won !";
         ordiScore++;
     } else if ((ordiChoice == userChoice)) {
@@ -33,7 +33,7 @@ function adjustScore() {
     } else {
         document.getElementById('winner').innerHTML = "!!! PROBLEM !!!";
     }
-    
+
     playedParties++;
 
     document.getElementById('playedParties').innerHTML = "Parties jouées : " + playedParties;
