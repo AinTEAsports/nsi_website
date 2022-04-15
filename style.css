@@ -8,22 +8,17 @@ body {
     background-size: cover;
 }
 
-mainText {
-    font-family: sans-serif;
-    font-size: 30pt;
-}
-
 button {
     display: inline-block;
     background-color: #35113d;
     border-radius: 20px;
-    border: 0px double #12001a00;
+    border: 0px;
     color: #ffffff;
     text-align: center;
     font-size: 22px;
     padding: 20px;
     width: 200px;
-    height: 60px;
+    height: 65px;
     -webkit-transition: all 0.5s;
     -moz-transition: all 0.5s;
     -o-transition: all 0.5s;
@@ -31,11 +26,12 @@ button {
     cursor: pointer;
     margin: 2px;
     text-align: center;
-    margin-top: 80pt;
+    margin-top: 130pt;
 }
 
-.white {
-    color: #ffffff
+.text {
+    color: #ffffff;
+    font-family: sans-serif;
 }
 
 .custom-select {
@@ -45,6 +41,6 @@ button {
     border-radius: 4pt;
     font-size: 15pt;
     width: 160pt;
-    height: 30px;
+    height: 37px;
     text-align: center;
 }

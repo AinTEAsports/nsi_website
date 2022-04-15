@@ -14,20 +14,20 @@
 
 <body>
     <center>
-        <h1>Score</h1>
-        <h1 id="score">0 - 0</h1>
+        <h1 class="scores">Score</h1>
+        <h1 id="score" class="scores">0 - 0</h1>
     </center>
 
     <userText>
         <h1>
-            <select id="userChoice">
+            <select class="custom-select" id="userChoice">
                 <option>Pierre</option>
                 <option>Feuille</option>
                 <option>Ciseau</option>
             </select>
-            <button onclick="userPlayed()">Validate</button>
+            <button onclick="userPlayed()" class="button">Validate</button>
         </h1>
-        <h1 class="name">USER :</h1>
+        <h1 class="name"><text>USER :</text></h1>
 
         <h1 id="userChoiceText"></h1>
     </userText>
@@ -56,8 +56,8 @@
     <br>
     <br>
 
-    <h5 id="playedParties">Parties jouées : 0</h5>
-    <h5 id="tiesNumber">Egalités : 0</h5>
+    <h5 id="playedParties" class="scores">Parties jouées : 0</h5>
+    <h5 id="tiesNumber" class="scores">Egalités : 0</h5>
 </body>
 
 </html>
