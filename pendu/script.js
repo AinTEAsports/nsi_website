@@ -35,7 +35,7 @@ const words = [
     "Hippopotomonstrosesquippedaliophobie",
     "Cyclopentanoperhydrophenanthrene",
     "Apopathodiaphulatophobie",
-    "Chicken Wings"
+    "Chickenwings"
 ]
 
 
@@ -70,18 +70,14 @@ function clearInput() {
 
 
 function sendChar() {
-    console.log(getWordDict());
 
-    let userChar = document.getElementById('char').value;
-    getWordDict();
+    let userChar = document.getElementById('char').value.toLowerCase();
 
     if (userChar.length != 1) {
         clearInput();
         window.alert("[!] Invalid input [!]");
         return;
     }
-
-    console.log(userChar);
 
     clearInput();
 }
