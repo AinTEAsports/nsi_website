@@ -7,3 +7,36 @@ body {
     background-image: url('./websiteBackground.jpg');
     background-size: cover;
 }
+
+button {
+    display: inline-block;
+    background-color: #35113d;
+    border-radius: 20px;
+    border: 0px;
+    color: #ffffff;
+    text-align: center;
+    font-size: 14px;
+    padding: 20px;
+    width: 170px;
+    height: 50px;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 2px;
+    text-align: center;
+    margin-top: 20pt;
+}
+
+.text {
+    color: #ffffff;
+    font-family: sans-serif;
+}
+
+.custom-input {
+    text-align: center;
+    font-family: sans-serif;
+    border-radius: 3pt;
+    font-size: 15pt;
+}

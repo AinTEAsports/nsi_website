@@ -15,14 +15,16 @@
 <body>
 
     <center>
-        <h2 onload="generateEnigme()" id="enigme">Ici une enigme</h2>
-        <input id="userResponse" type="text" />
+        <h2 onload="generateEnigme()" id="enigme" class="text">Ici une enigme</h2>
+        <h2 class="text" id="reponse"></h2>
         <br>
-        <br>
-        <button onclick="generateEnigme()">Changer d'enigme</button>
+        <input id="userResponse" type="text" class="custom-input" />
         <br>
         <br>
         <button onclick="sendAnswer()">Send Answer</button>
+        <br>
+        <button onclick="generateEnigme()">Changer d'enigme</button>
+        <button onclick="showAnswer()">Afficher la reponse</button>
         <br>
         <br>
         <br>

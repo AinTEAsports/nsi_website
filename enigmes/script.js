@@ -1,13 +1,13 @@
-var enigmes = {
-    "Qu'est ce qui peut tourner et pleurer ?" : "Un robinet",
-    "J'ai 4 pattes le matin, 2 pattes le midi et 3 pattes le soir, qui suis-je ?" : "L'Homme",
-    "J'ai un dos et 4 pieds pourtant je ne peux pas marcher, qui suis-je ?" : "Une chaise",
-    "Je ne fais pas de bruit pour vous reveiller, pourtant je vous reveille, qui suis-je ?" : "Le soleil",
-    "Quand je suis frais je suis chaud, qui suis-je ?" : "Le pain",
-    "Quand je suis content je me lève, mais je suis plus petit que le reste, qui suis-je ?" : "Le pouce",
-    "J'ai un pied mais pas de chaussure, j'ai un chapeau mais pas de tête, qui suis-je ?" : "Un champignon",
-    "Plus je suis present et moins je pese, qui suis-je ?" : "Le vide",
-    "Je suis meilleur que Dieu, pire que le diable, les pauvres l'ont, les riches en ont besoin, si tu me mange tu meurt, qui suis-je ?" : "Rien"
+const enigmes = {
+    "Qu'est ce qui peut tourner et pleurer ?": "Un robinet",
+    "J'ai 4 pattes le matin, 2 pattes le midi et 3 pattes le soir, qui suis-je ?": "L'Homme",
+    "J'ai un dos et 4 pieds pourtant je ne peux pas marcher, qui suis-je ?": "Une chaise",
+    "Je ne fais pas de bruit pour vous reveiller, pourtant je vous reveille, qui suis-je ?": "Le soleil",
+    "Quand je suis frais je suis chaud, qui suis-je ?": "Le pain",
+    "Quand je suis content je me lève, mais je suis plus petit que le reste, qui suis-je ?": "Le pouce",
+    "J'ai un pied mais pas de chaussure, j'ai un chapeau mais pas de tête, qui suis-je ?": "Un champignon",
+    "Plus je suis present et moins je pese, qui suis-je ?": "Le vide",
+    "Je suis meilleur que Dieu, pire que le diable, les pauvres l'ont, les riches en ont besoin, si tu me mange tu meurt, qui suis-je ?": "Rien"
 };
 
 var index;
@@ -34,9 +34,9 @@ function generateEnigme() {
     // Je reinitialise le nombre d'erreurs de la precedente enigme
     document.getElementById('triesNumber').innerHTML = 0;
 
-
+    // Je choisis un nombre random
     index = ordiRandomChoice();
-    
+
     var enigmeList = Object.keys(enigmes);
     var reponseList = Object.values(enigmes);
 
@@ -45,6 +45,9 @@ function generateEnigme() {
 
     // Je reinitialise le contenu de l'input
     document.getElementById('userResponse').value = "";
+
+    // Et celui de la reponse
+    document.getElementById('reponse').innerHTML = "";
 
     document.getElementById('enigme').innerHTML = enigme;
 }
@@ -71,6 +74,15 @@ function sendAnswer() {
         essaisNumber++;
         document.getElementById('triesNumber').innerHTML = essaisNumber;
     }
+}
+
+
+function showAnswer() {
+    let enigme = document.getElementById('enigme').innerHTML;
+    let reponse = enigmes[enigme];
+
+
+    document.getElementById('reponse').innerHTML = reponse;
 }
 
 
