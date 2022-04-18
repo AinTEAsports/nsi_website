@@ -40,6 +40,27 @@ const words = [
 
 
 
+function join(word, char) {
+    let joinedWord = "";
+
+    for (let i = 0; i < word.length; i++) {
+        if (word[i] != char) {
+            joinedWord += word[i];
+        }
+    }
+
+    return joinedWord;
+}
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    generateWord();
+});
+
+
+
 function homeButton() {
     window.location.href = "/";
 }
@@ -52,7 +73,7 @@ function getWordDict() {
     let hiddenWord = "";
 
     for (let i = 0; i < word.length; i++) {
-        hiddenWord += "-";
+        hiddenWord += "_";
 
         if (i != word.length) {
             hiddenWord += " ";
@@ -69,15 +90,30 @@ function clearInput() {
 }
 
 
+
+function generateWord() {
+    let wordDict = getWordDict();
+
+    console.log(wordDict);
+    console.log(Object.keys(wordDict)[0]);
+}
+
+
+
 function sendChar() {
 
     let userChar = document.getElementById('char').value.toLowerCase();
 
-    if (userChar.length != 1) {
+
+    if (userChar.length == 0) {
+        return;
+    } else if (userChar.length != 1) {
         clearInput();
         window.alert("[!] Invalid input [!]");
         return;
     }
+
+    console.log(userChar);
 
     clearInput();
 }
