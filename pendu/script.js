@@ -1,3 +1,6 @@
+var wordDict;
+
+
 const words = [
     "Ornithorynque",
     "Lunettes",
@@ -40,16 +43,40 @@ const words = [
 
 
 
-function join(word, char) {
-    let joinedWord = "";
+
+function join(charList, char) {
+    let joined = "";
+
+    for (let i = 0; i < charList.length; i++) {
+        joined += charList[i];
+        joined += char;
+    }
+
+    return joined;
+}
+
+
+function split(word, char) {
+    let splittedWord = [];
 
     for (let i = 0; i < word.length; i++) {
         if (word[i] != char) {
-            joinedWord += word[i];
+            splittedWord.push(word[i]);
         }
     }
 
-    return joinedWord;
+    return splittedWord;
+}
+
+
+function contains(word, char = '') {
+    for (let i = 0; i < word.length; i++) {
+        if (word[i] == char) {
+            return true;
+        }
+    }
+
+    return false;
 }
 
 
@@ -73,13 +100,8 @@ function getWordDict() {
     let hiddenWord = "";
 
     for (let i = 0; i < word.length; i++) {
-        hiddenWord += "_";
-
-        if (i != word.length) {
-            hiddenWord += " ";
-        }
+        hiddenWord += "_ ";
     }
-
 
     return { word: hiddenWord };
 }
@@ -92,12 +114,35 @@ function clearInput() {
 
 
 function generateWord() {
-    let wordDict = getWordDict();
+    wordDict = getWordDict();
 
-    console.log(wordDict);
-    console.log(Object.keys(wordDict)[0]);
+    document.getElementById('hiddenWord').innerHTML = Object.values(wordDict)[0];
 }
 
+
+
+function addWrongChar(char) {
+    let charList = document.getElementById('charList');
+    charList = split(charList, ' ');
+
+    if (contains(charList, char)) {
+        return;
+    } else {
+        charList.push(char);
+    }
+
+    document.getElementById('charList').innerHTML += join(charList, ' ');
+}
+
+
+function insertChar(char) {
+    let hiddenWord = document.getElementById('hiddenWord').innerHTML;
+    hiddenWord = join(split(hiddenWord, ' '), '');
+
+    for (let i = 0; i < Object.keys(wordDict); i++) {
+        console.log(i);
+    }
+}
 
 
 function sendChar() {
@@ -113,7 +158,11 @@ function sendChar() {
         return;
     }
 
-    console.log(userChar);
+    if (contains(Object.keys(wordDict)[0], userChar)) {
+        insertChar(userChar);
+    } else {
+        addWrongChar(userChar);
+    }
 
     clearInput();
 }
