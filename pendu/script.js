@@ -1,5 +1,6 @@
 var wordDict;
-
+const maxEssais = 13;
+var nombreEssais = 0;
 
 const words = [
     "Ornithorynque",
@@ -33,8 +34,8 @@ const words = [
     "Hexakosioihexekontahexaphobie",
     "Glycosylphosphatidylethanolamine",
     "Orthochlorobenzalmalonitrile",
-    "Dichlorodiphényltrichloroéthane",
-    "Aminomethylpyrimidinylhydroxyéthylmethythiazolium",
+    "Dichlorodiphenyltrichloroethane",
+    "Aminomethylpyrimidinylhydroxyethylmethythiazolium",
     "Hippopotomonstrosesquippedaliophobie",
     "Cyclopentanoperhydrophenanthrene",
     "Apopathodiaphulatophobie",
@@ -42,6 +43,20 @@ const words = [
 ]
 
 
+
+function replace(string, index, letter) {
+    let newString = "";
+
+    for (let i = 0; i < string.length; i++) {
+        if (i == index) {
+            newString += letter;
+        } else {
+            newString += string[i];
+        }
+    }
+
+    return newString;
+}
 
 
 function join(charList, char) {
@@ -83,6 +98,7 @@ function contains(word, char = '') {
 
 
 document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('maxEssais').innerHTML = "Maximum d'essais : " + maxEssais;
     generateWord();
 });
 
@@ -90,6 +106,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function homeButton() {
     window.location.href = "/";
+}
+
+function resetPage() {
+    window.location.href = "/pendu/index.html";
 }
 
 
@@ -103,7 +123,7 @@ function getWordDict() {
         hiddenWord += "_ ";
     }
 
-    return { word: hiddenWord };
+    return [word.toLowerCase(), hiddenWord];
 }
 
 
@@ -116,7 +136,20 @@ function clearInput() {
 function generateWord() {
     wordDict = getWordDict();
 
-    document.getElementById('hiddenWord').innerHTML = Object.values(wordDict)[0];
+    document.getElementById('hiddenWord').innerHTML = wordDict[1];
+
+    console.log(wordDict[0]);
+}
+
+
+
+function userWon() {
+    document.getElementById('congratulations').innerHTML = "Vous avez trouvé le mot !";
+}
+
+
+function userLoose() {
+    document.getElementById('congratulations').innerHTML = "Perdu, le mot était : " + wordDict[0];
 }
 
 
@@ -125,30 +158,50 @@ function addWrongChar(char) {
     let charList = document.getElementById('charList');
     charList = split(charList, ' ');
 
-    if (contains(charList, char)) {
-        return;
-    } else {
-        charList.push(char);
-    }
+    charList.push(char);
+
+    nombreEssais++;
+    document.getElementById('triesNumber').innerHTML = "Nombre d'essais : " + nombreEssais;
 
     document.getElementById('charList').innerHTML += join(charList, ' ');
+
+
+    if (nombreEssais >= maxEssais) {
+        userLoose();
+    }
 }
 
 
 function insertChar(char) {
     let hiddenWord = document.getElementById('hiddenWord').innerHTML;
+
     hiddenWord = join(split(hiddenWord, ' '), '');
 
-    for (let i = 0; i < Object.keys(wordDict); i++) {
-        console.log(i);
+    for (let i = 0; i < wordDict[0].length; i++) {
+        if (char == wordDict[0][i]) {
+            hiddenWord = replace(hiddenWord, i, wordDict[0][i]);
+            wordDict[1] = hiddenWord;
+        }
+    }
+
+    document.getElementById('hiddenWord').innerHTML = join(wordDict[1], ' ');
+
+    let motComplet = join(split(document.getElementById('hiddenWord').innerHTML, ' '), '');
+
+    if (motComplet == wordDict[0]) {
+        userWon();
     }
 }
 
 
 function sendChar() {
+    if (document.getElementById('congratulations').innerHTML) {
+        clearInput();
+        return;
+    }
+
 
     let userChar = document.getElementById('char').value.toLowerCase();
-
 
     if (userChar.length == 0) {
         return;
@@ -158,7 +211,7 @@ function sendChar() {
         return;
     }
 
-    if (contains(Object.keys(wordDict)[0], userChar)) {
+    if (contains(wordDict[0].toLowerCase(), userChar)) {
         insertChar(userChar);
     } else {
         addWrongChar(userChar);
