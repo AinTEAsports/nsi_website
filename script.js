@@ -34,5 +34,5 @@ function gameRedirect() {
 
 
 function redirect() {
-    window.location.href = "https://www.youtube.com/watch?v=x31tDT-4fQw";
+    window.location.href = "https://www.youtube.com/watch?v=p7YXXieghto";
 }
