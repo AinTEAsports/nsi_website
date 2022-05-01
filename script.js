@@ -24,7 +24,7 @@ function gameRedirect() {
     var gameName = getGameName();
 
     if (gameName == null) {
-        window.alert("[!] You need to select a game [!]");
+        window.alert("[!] Vous devez choisir un jeu [!]");
         return;
     }
 
@@ -33,6 +33,6 @@ function gameRedirect() {
 }
 
 
-function rickroll() {
-    window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+function redirect() {
+    window.location.href = "https://www.youtube.com/watch?v=x31tDT-4fQw";
 }
