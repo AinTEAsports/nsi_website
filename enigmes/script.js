@@ -1,3 +1,4 @@
+// Dictionnaire ou les enigmes/reponses sont
 const enigmes = {
     "Qu'est ce qui peut tourner et pleurer ?": "Un robinet",
     "J'ai 4 pattes le matin, 2 pattes le midi et 3 pattes le soir, qui suis-je ?": "L'Homme",
@@ -10,23 +11,25 @@ const enigmes = {
     "Je suis meilleur que Dieu, pire que le diable, les pauvres l'ont, les riches en ont besoin, si tu me mange tu meurt, qui suis-je ?": "Rien"
 };
 
+// Index de l'enigme actuelle
 var index;
 
 
+// Fonction pour lancer la generation de l'enigme dès que la page est lancée
 document.addEventListener('DOMContentLoaded', function() {
     generateEnigme();
 });
 
 
-function ordiRandomChoice() {
-    // Je fais une liste avec les elements pierre feuille et ciseau
-    // et j'en choisis un au hasard
+// On recupere un nombre aleatoire
+function randomChoice() {
     var randomIndex = (Math.floor(Math.random() * Object.keys(enigmes).length));
 
     return randomIndex;
 }
 
 
+// On choisit une enigme aleatoire (avec un index aleatoire)
 function generateEnigme() {
     // Je reinitialise le texte de bonne ou mauvaise reponse
     document.getElementById('goodfalsereponse').innerHTML = "";
@@ -35,7 +38,7 @@ function generateEnigme() {
     document.getElementById('triesNumber').innerHTML = 0;
 
     // Je choisis un nombre random
-    index = ordiRandomChoice();
+    index = randomChoice();
 
     var enigmeList = Object.keys(enigmes);
     var reponseList = Object.values(enigmes);
@@ -53,6 +56,7 @@ function generateEnigme() {
 }
 
 
+// On envoie la reponse entree, et on affiche du texte en fonction de si c'est juste ou faux
 function sendAnswer() {
     let enigmeAffichee = document.getElementById('enigme').innerHTML;
     let userReponse = document.getElementById('userResponse').value;
@@ -77,6 +81,7 @@ function sendAnswer() {
 }
 
 
+// Fonction pour afficher la reponse
 function showAnswer() {
     let enigme = document.getElementById('enigme').innerHTML;
     let reponse = enigmes[enigme];
@@ -86,6 +91,7 @@ function showAnswer() {
 }
 
 
+// Fonction pour retourner au bouton home
 function homeButton() {
     window.location.href = "/";
 }

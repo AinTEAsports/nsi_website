@@ -1,7 +1,9 @@
-var wordDict;
+// On initialise les variables utiles
+var wordList; // avec le format ["mot", "_ _ _"]
 const maxEssais = 13;
 var nombreEssais = 0;
 
+// Liste de mots
 const words = [
     "Ornithorynque",
     "Lunettes",
@@ -36,6 +38,7 @@ const words = [
     "Orthochlorobenzalmalonitrile",
     "Dichlorodiphenyltrichloroethane",
     "Aminomethylpyrimidinylhydroxyethylmethythiazolium",
+    "Acide desoxyribonucleique",
     "Hippopotomonstrosesquippedaliophobie",
     "Cyclopentanoperhydrophenanthrene",
     "Apopathodiaphulatophobie",
@@ -44,6 +47,7 @@ const words = [
 
 
 
+// Fonction pour remplacer une lettre a un index par une autre lettre
 function replace(string, index, letter) {
     let newString = "";
 
@@ -59,6 +63,7 @@ function replace(string, index, letter) {
 }
 
 
+// Fonction pour mettre un caractere "char" entre chaque lettre
 function join(charList, char) {
     let joined = "";
 
@@ -71,6 +76,7 @@ function join(charList, char) {
 }
 
 
+// Fonction pour enlever chaque occurence d'une lettre d'un mot
 function split(word, char) {
     let splittedWord = [];
 
@@ -84,6 +90,7 @@ function split(word, char) {
 }
 
 
+// Renvoie si un mot contient une lettre ou non
 function contains(word, char = '') {
     for (let i = 0; i < word.length; i++) {
         if (word[i] == char) {
@@ -96,7 +103,7 @@ function contains(word, char = '') {
 
 
 
-
+// Initialise et affiche le nombre d'essais au demarrage de la page
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('maxEssais').innerHTML = "Maximum d'essais : " + maxEssais;
     generateWord();
@@ -104,16 +111,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
+// Fonction pour le bouton home
 function homeButton() {
     window.location.href = "/";
 }
 
+
+// Fonction pour reset la page (on l'actualise juste)
 function resetPage() {
     window.location.href = "/pendu/index.html";
 }
 
 
-function getWordDict() {
+// On recupere la liste de mots
+function getWordList() {
     let randomIndex = (Math.floor(Math.random() * words.length));
 
     let word = words[randomIndex];
@@ -127,33 +138,33 @@ function getWordDict() {
 }
 
 
+// On clear l'input (on met vide)
 function clearInput() {
     document.getElementById('char').value = "";
 }
 
 
-
+// On affiche le mot caché
 function generateWord() {
-    wordDict = getWordDict();
+    wordList = getWordList();
 
-    document.getElementById('hiddenWord').innerHTML = wordDict[1];
-
-    console.log(wordDict[0]);
+    document.getElementById('hiddenWord').innerHTML = wordList[1];
 }
 
 
-
+// On affiche que l'utilisateur a gagné
 function userWon() {
     document.getElementById('congratulations').innerHTML = "Vous avez trouvé le mot !";
 }
 
 
-function userLoose() {
-    document.getElementById('congratulations').innerHTML = "Perdu, le mot était : " + wordDict[0];
+// On affiche que l'utilisateur a perdu
+function userLose() {
+    document.getElementById('congratulations').innerHTML = "Perdu, le mot était : " + wordList[0];
 }
 
 
-
+// Fonction pour ajouter une lettre fausse a la liste des lettres fausses
 function addWrongChar(char) {
     let charList = document.getElementById('charList');
     charList = split(charList, ' ');
@@ -167,33 +178,35 @@ function addWrongChar(char) {
 
 
     if (nombreEssais >= maxEssais) {
-        userLoose();
+        userLose();
     }
 }
 
 
+// Fonction pour remplacer les lettres cachées par les lettres trouvées
 function insertChar(char) {
     let hiddenWord = document.getElementById('hiddenWord').innerHTML;
 
     hiddenWord = join(split(hiddenWord, ' '), '');
 
-    for (let i = 0; i < wordDict[0].length; i++) {
-        if (char == wordDict[0][i]) {
-            hiddenWord = replace(hiddenWord, i, wordDict[0][i]);
-            wordDict[1] = hiddenWord;
+    for (let i = 0; i < wordList[0].length; i++) {
+        if (char == wordList[0][i]) {
+            hiddenWord = replace(hiddenWord, i, wordList[0][i]);
+            wordList[1] = hiddenWord;
         }
     }
 
-    document.getElementById('hiddenWord').innerHTML = join(wordDict[1], ' ');
+    document.getElementById('hiddenWord').innerHTML = join(wordList[1], ' ');
 
     let motComplet = join(split(document.getElementById('hiddenWord').innerHTML, ' '), '');
 
-    if (motComplet == wordDict[0]) {
+    if (motComplet == wordList[0]) {
         userWon();
     }
 }
 
 
+// Fonction du bouton 'Send'
 function sendChar() {
     if (document.getElementById('congratulations').innerHTML) {
         clearInput();
@@ -211,7 +224,7 @@ function sendChar() {
         return;
     }
 
-    if (contains(wordDict[0].toLowerCase(), userChar)) {
+    if (contains(wordList[0], userChar)) {
         insertChar(userChar);
     } else {
         addWrongChar(userChar);
